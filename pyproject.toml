@@ -1,0 +1,68 @@
+[project]
+name = "vbench"
+version = "0.1.5"
+description = "Video generation benchmark"
+readme = "README-pypi.md"
+requires-python = ">=3.10"
+license = { text = "Apache Software License 2.0" }
+dependencies = [
+    "torch==2.5.1",
+    "torchvision==0.20.1",
+    "Pillow",
+    "numpy<2.0.0",
+    "matplotlib",
+    "timm>=0.9,<=1.0.12",
+    "wheel",
+    "cython",
+    "tensorboard",
+    "scipy",
+    "opencv-python",
+    "scikit-learn",
+    "scikit-image",
+    "openai-clip",
+    "decord",
+    "requests",
+    "pyyaml",
+    "easydict",
+    "pyiqa",
+    "lvis",
+    "fairscale>=0.4.4",
+    "fvcore",
+    "easydict",
+    "urllib3",
+    "boto3",
+    "omegaconf",
+    "pycocoevalcap",
+    "ffmpeg>=1.4",
+    "scenedetect[opencv]>=0.6.6",
+    "av==13.1.0",
+    "dreamsim==0.2.1",
+    "transformers==4.49.0",
+    "setuptools==80.8.0",
+]
+
+[project.urls]
+Source = "https://github.com/Vchitect/VBench"
+
+[tool.uv]
+no-build-isolation-package = ["detectron2"]
+
+
+# [project.optional-dependencies]
+# extra = [
+#   "detectron2"
+# ]
+
+[[tool.uv.index]]
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cu121", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+torchvision = [
+    { index = "pytorch-cu121", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+detectron2 = { git = "https://github.com/facebookresearch/detectron2.git", rev = "536dc9d527074e3b15df5f6677ffe1f4e104a4ab" }
