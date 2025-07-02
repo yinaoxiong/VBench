@@ -28,9 +28,9 @@ for i in "${!dimensions[@]}"; do
 
     # Run the evaluation script
     if [ "$dimension" == "temporal_flickering" ]; then
-        python vbench2_beta_long/eval_long.py --videos_path $videos_path --dimension $dimension --mode 'long_vbench_standard' --dev_flag --static_filter_flag || exit 1
+        python vbench2_beta_long/eval_long.py --videos_path $videos_path --dimension $dimension --mode 'long_vbench_standard' --dev_flag --static_filter_flag "${@:2}" || exit 1
     else
-        python vbench2_beta_long/eval_long.py --videos_path $videos_path --dimension $dimension --mode 'long_vbench_standard' --dev_flag || exit 1
+        python vbench2_beta_long/eval_long.py --videos_path $videos_path --dimension $dimension --mode 'long_vbench_standard' --dev_flag "${@:2}" || exit 1
     fi
     
 done
